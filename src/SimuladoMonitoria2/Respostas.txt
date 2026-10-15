@@ -1,0 +1,3 @@
+Respostas 
+
+1- b) cliente v não vai rodar pois esta criando uma instancia do tipo clienteVip e ao passar os parâmetros esta passando cliente que é sua classe pai. Ja cliente c vai rodar tranquilamente pois esta respeitando a hierarquia de classes.
