@@ -1,3 +1,51 @@
-Respostas 
+QUESTÃO 1 — HERANÇA
 
-1- b) cliente v não vai rodar pois esta criando uma instancia do tipo clienteVip e ao passar os parâmetros esta passando cliente que é sua classe pai. Ja cliente c vai rodar tranquilamente pois esta respeitando a hierarquia de classes.
+b) O primeiro trecho compila, pois ClienteVip herda de Cliente, portanto, um ClienteVip é um Cliente. O segundo trecho não compila, pois nem todo Cliente é um ClienteVip. A atribuição de uma referência da classe pai para uma variável da subclasse exige um objeto compatível com a subclasse.
+
+QUESTÃO 2 — CLASSES ABSTRATAS
+
+b)
+
+1. A instrução new Produto(...) não compila porque Produto é uma classe abstrata e não pode ser instanciada diretamente. Isso permite definir características e comportamentos comuns, obrigando as subclasses concretas a implementar os métodos abstratos.
+
+2. Isso funciona porque exibirResumo() chama calcularPrecoFinal(), que é declarado como abstrato em Produto. Quando o método é executado, Java utiliza a implementação sobrescrita pela classe real do objeto, por meio do polimorfismo.
+
+QUESTÃO 3 — INTERFACES
+
+c)
+
+1. Entregavel foi criada como interface porque representa uma capacidade que uma classe pode implementar, sem precisar pertencer a uma hierarquia específica. Assim, diferentes classes podem oferecer métodos de entrega, mesmo que não tenham a mesma classe pai.
+
+2. Duas diferenças são: uma classe pode implementar várias interfaces, mas só pode estender uma classe; além disso, uma classe abstrata pode possuir atributos de instância e construtores, enquanto uma interface define principalmente um contrato de comportamentos e não possui construtores.
+
+QUESTÃO 4 — POLIMORFISMO
+
+b) A saída é:
+
+Teclado: 110.0
+E-book Java: 540.0
+Streaming: 19.0
+
+O mecanismo responsável é o polimorfismo por sobrescrita, também chamado de ligação dinâmica. Java executa a versão de calcularPrecoFinal() correspondente ao tipo real do objeto em tempo de execução, mesmo que a referência seja do tipo Produto.
+
+c) A linha não compila se p1 estiver declarado como Produto, pois calcularFrete() pertence à interface Entregavel, e não à classe Produto. Uma forma de reescrevê-la é:
+
+((Entregavel) p1).calcularFrete("60000-000");
+
+O tipo da referência determina quais métodos podem ser acessados diretamente pelo compilador. O tipo real do objeto determina qual implementação será executada. O cast funciona se o objeto realmente implementar Entregavel.
+
+QUESTÃO 5 — EXCEÇÕES
+
+b) A saída é:
+
+B: Estoque insuficiente para Teclado. Disponível: 3
+C
+D
+
+A chamada adicionar(teclado, 10) lança EstoqueInsuficienteException porque a quantidade solicitada supera o estoque disponível. Por isso, a instrução que imprime A não é executada. O catch captura a exceção, o finally imprime C e, depois, a execução continua imprimindo D.
+
+c) O compilador obriga o tratamento de EstoqueInsuficienteException porque ela herda diretamente de Exception, sendo uma exceção verificada. Já PagamentoRecusadoException herda de RuntimeException, sendo não verificada e dispensando declaração ou tratamento obrigatório. A exceção verificada é útil quando o chamador deve tratar explicitamente uma situação recuperável; a não verificada pode ser usada para falhas de execução que não precisam ser declaradas obrigatoriamente.
+
+QUESTÃO 6 — INTEGRAÇÃO FINAL
+
+Não há questão discursiva teórica nesta parte. O enunciado solicita a implementação da classe Pedido e de um main que demonstre uma compra com Pix aprovada e outra com cartão recusada.
